@@ -8,11 +8,11 @@
 
 import SwiftUI
 import ASCollectionView_SwiftUI
+import Combine
 
 struct CategoriesFoodList: View {
     var categorytitle: String
     @ObservedObject var viewModel: CategoryFoodListViewModel
-    @State private var data = [MealList]()
     var body: some View {
         ZStack {
             Color.appBackgroundColor.edgesIgnoringSafeArea(.all)
@@ -20,7 +20,7 @@ struct CategoriesFoodList: View {
                 ForEach(viewModel.categoriesMealData.indices, id: \.self) { index in
                     ZStack {
                         MealView(dataItems: self.viewModel.categoriesMealData[index], imageLoader: ImageLoader(urlString: self.viewModel.categoriesMealData[index].strMealThumb))
-                        NavigationLink(destination: MealDetailView(mealId: self.viewModel.categoriesMealData[index].idMeal)) {
+                        NavigationLink(destination: MealDetailView(mealId: self.viewModel.categoriesMealData[index].idMeal, viewModel: MealDetailViewModel())){
                             EmptyView()
                         }
                         .buttonStyle(PlainButtonStyle())
@@ -31,7 +31,7 @@ struct CategoriesFoodList: View {
             
         }.navigationBarTitle("MealApp", displayMode: .inline)
             .onAppear {
-                self.viewModel.loadList(title: self.categorytitle)
+                self.viewModel.getFoodList(title: self.categorytitle)
         }
     }
 }
@@ -49,11 +49,11 @@ struct MealView: View {
                             .frame(width: geo.size.width, height: 500)
                             .foregroundColor(.yellow)
                             .shadow(radius: 10)
-                            .padding(.top)
+                            .padding(.bottom)
                         
                     }
                 }
-            }.frame(height: 200 )
+            }.frame(height: 300 )
             HStack {
                 Spacer()
                 Text(self.dataItems.strMeal)

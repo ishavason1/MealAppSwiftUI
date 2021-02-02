@@ -11,43 +11,22 @@ import SwiftUI
 struct MealDetailView: View {
     var mealId: String
     @State private var data = [MealDetail]()
+    @ObservedObject var viewModel: MealDetailViewModel
     var body: some View {
         ScrollView {
-            if data.count > 0 {
-                MealItemView(dataItems: data[0], imageLoader: ImageLoader(urlString: data.first?.strMealThumb ?? ""))
+            if viewModel.mealDetailData.count > 0 {
+                MealItemView(dataItems: viewModel.mealDetailData[0], imageLoader: ImageLoader(urlString: viewModel.mealDetailData.first?.strMealThumb ?? ""))
             }
         }.padding(.bottom)
-            .onAppear(perform: loadData)
+            .onAppear(perform: {
+                self.viewModel.loadMealDetails(mealId)
+            })
             .background(Color.appBackgroundColor.edgesIgnoringSafeArea(.all))
         
     }
-    
-    func loadData() {
-        guard let url = URL(string: "https://www.themealdb.com/api/json/v1/1/lookup.php?i=\(mealId)") else {
-            print("Invalid URL")
-            return
-        }
-        let request = URLRequest(url: url)
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data {
-                if let decodedResponse = try? JSONDecoder().decode(MealInfo.self, from: data) {
-                    // we have good data – go back to the main thread
-                    DispatchQueue.main.async {
-                        
-                        // update our UI
-                        self.data = decodedResponse.meals ?? []
-                        print(self.data)
-                    }
-                    
-                    // everything is good, so we can exit
-                    return
-                }
-            }
-        }.resume()
-        
-    }
 }
-
+    
+  
 struct MealItemView: View {
     let dataItems: MealDetail
     @ObservedObject var imageLoader:ImageLoader
@@ -92,7 +71,7 @@ struct MealItemView: View {
 }
         struct MealDetailView_Previews: PreviewProvider {
             static var previews: some View {
-                MealDetailView(mealId: "")
+                MealDetailView(mealId: "", viewModel: MealDetailViewModel())
             }
 }
 
