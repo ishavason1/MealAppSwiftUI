@@ -13,23 +13,32 @@ import Combine
 struct CategoriesFoodList: View {
     var categorytitle: String
     @ObservedObject var viewModel: CategoryFoodListViewModel
+    @State var expandedItem = MealDetailView(mealId: "", viewModel: MealDetailViewModel())
+    
+    let itemHeight:CGFloat = 500
+    let SVWidth = UIScreen.main.bounds.width - 40
     var body: some View {
         ZStack {
             Color.appBackgroundColor.edgesIgnoringSafeArea(.all)
-            List {
-                ForEach(viewModel.categoriesMealData.indices, id: \.self) { index in
+            ScrollView{
+                ForEach(viewModel.categoriesMealData, id: \.self){ thisItem in
+                    GeometryReader { geo -> AnyView in
+                        return AnyView(
                     ZStack {
-                        MealView(dataItems: self.viewModel.categoriesMealData[index], imageLoader: ImageLoader(urlString: self.viewModel.categoriesMealData[index].strMealThumb))
-                        NavigationLink(destination: MealDetailView(mealId: self.viewModel.categoriesMealData[index].idMeal, viewModel: MealDetailViewModel())){
-                            EmptyView()
-                        }
-                        .buttonStyle(PlainButtonStyle())
-                    }
-                }
+                        MealView(dataItems: thisItem, imageLoader: ImageLoader(urlString: thisItem.strMealThumb))
+                    }.cornerRadius(15).foregroundColor(.white)
+                    .shadow(color: .init(red: 0.1, green: 0.1, blue: 0.1)
+                      , radius: 11 , x: 0, y: 4)
+                        )
+                }.background(Color.clear.opacity(0.4))
+                    .frame(height:self.itemHeight)
+                    .padding(.leading, 20)
+                    .padding(.trailing, 20)
+                    .padding(.bottom, 20)
             }
-            .listStyle(GroupedListStyle())
-            
-        }.navigationBarTitle("MealApp", displayMode: .inline)
+            }
+        }
+         .navigationBarTitle("MealApp", displayMode: .inline)
             .onAppear {
                 self.viewModel.getFoodList(title: self.categorytitle)
         }
@@ -38,22 +47,17 @@ struct CategoriesFoodList: View {
 struct MealView: View {
     let dataItems: MealList
     @ObservedObject var imageLoader:ImageLoader
+    let SVWidth = UIScreen.main.bounds.width - 40
+    let itemHeight:CGFloat = 500
     var body: some View {
+        Image(uiImage: self.imageLoader.data != nil ? UIImage(data:self.imageLoader.data!)! : UIImage())
+            .resizable()
+            .scaledToFill()
+            .frame(width: self.SVWidth, height: itemHeight)
+            .foregroundColor(.yellow)
+            .clipped()
         VStack {
-            HStack {
-                ForEach(0..<1) { items in
-                    GeometryReader { geo in
-                        Image(uiImage: self.imageLoader.data != nil ? UIImage(data:self.imageLoader.data!)! : UIImage())
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: geo.size.width, height: 500)
-                            .foregroundColor(.yellow)
-                            .shadow(radius: 10)
-                            .padding(.bottom)
-                        
-                    }
-                }
-            }.frame(height: 300 )
+            Spacer()
             HStack {
                 Spacer()
                 Text(self.dataItems.strMeal)
@@ -62,10 +66,7 @@ struct MealView: View {
                     .font(.custom("Helvetica Neue", size: 20))
                 Spacer()
             }.background(Color.black.opacity(0.5))
-                
-                .padding(.top)
-        }.background(Color.white)
-            .cornerRadius(7)
+        }
     }
 }
 
