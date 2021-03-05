@@ -31,7 +31,7 @@ struct ContentView: View {
                           itemSize: .absolute(160))
                     }
                 
-            }.navigationBarTitle("Categories", displayMode: .inline)
+            }.navigationBarTitle("Categories", displayMode: .large)
                
                 .onAppear(perform: viewModel.loadData)
             

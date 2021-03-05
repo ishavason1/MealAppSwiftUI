@@ -13,11 +13,22 @@ struct MealDetailView: View {
     @State private var data = [MealDetail]()
     @ObservedObject var viewModel: MealDetailViewModel
     var body: some View {
+        VStack {
+            VStack{
+                ZStack {
+                    ImageRow(imageLoader: ImageLoader(urlString: viewModel.mealDetailData.first?.strMealThumb ?? ""))
+                }
+            }
+        .frame(width: screen.width, height: 400)
+        .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
         ScrollView {
             if viewModel.mealDetailData.count > 0 {
-                MealItemView(dataItems: viewModel.mealDetailData[0], imageLoader: ImageLoader(urlString: viewModel.mealDetailData.first?.strMealThumb ?? ""))
+                MealItemView(dataItems: viewModel.mealDetailData[0])
             }
-        }.padding(.bottom)
+        } .edgesIgnoringSafeArea(.all)
+            
+        }
+        .padding(.bottom)
             .onAppear(perform: {
                 self.viewModel.loadMealDetails(mealId)
             })
@@ -25,38 +36,18 @@ struct MealDetailView: View {
         
     }
 }
-    
+
   
 struct MealItemView: View {
     let dataItems: MealDetail
-    @ObservedObject var imageLoader:ImageLoader
     var body: some View {
-        VStack {
-            HStack {
-                ForEach(0..<1) { items in
-                    GeometryReader { geo in
-                        Image(uiImage: self.imageLoader.data != nil ? UIImage(data:self.imageLoader.data!)! : UIImage())
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: geo.size.width, height: 300)
-                            .foregroundColor(.yellow)
-                            .shadow(radius: 10)
-                            .padding(.top)
-                        
-                    }
-                }
-            }.frame(height: 300 )
-                .cornerRadius(7)
-            VStack {
-                Spacer()
+            VStack(alignment: .leading, spacing: 30.0) {
                 Text("Instructions")
                     .fontWeight(.bold)
                     .foregroundColor(Color.white)
                     .frame(height: 50)
                     .font(.title)
                     .font(.custom("Helvetica Neue", size: 20))
-                Spacer()
-    
                     Text(self.dataItems.strInstructions)
                     .foregroundColor(Color.white)
                     
@@ -68,7 +59,7 @@ struct MealItemView: View {
                 
             }
         }
-}
+
         struct MealDetailView_Previews: PreviewProvider {
             static var previews: some View {
                 MealDetailView(mealId: "", viewModel: MealDetailViewModel())

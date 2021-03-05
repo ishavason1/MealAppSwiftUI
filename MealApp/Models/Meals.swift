@@ -9,11 +9,6 @@
 import Foundation
 struct Meals: Codable {
     var meals: [MealList]?
-    
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        self.meals = try values.decodeIfPresent([MealList].self, forKey: .meals)
-    }
 }
 
 struct MealList: Codable, Hashable {
