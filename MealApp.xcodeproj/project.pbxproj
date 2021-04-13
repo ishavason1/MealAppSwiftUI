@@ -21,9 +21,9 @@
 		FE64AB28250CC2E000535322 /* CategoriesFoodList.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE64AB27250CC2E000535322 /* CategoriesFoodList.swift */; };
 		FE64AB2A250D429700535322 /* Meals.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE64AB29250D429700535322 /* Meals.swift */; };
 		FE6624702517CB7800B895B1 /* MealDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE66246F2517CB7800B895B1 /* MealDetail.swift */; };
-		FE86FE0B261CD58100F7DE92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE86FE0A261CD58100F7DE92 /* Assets.xcassets */; };
 		FE8DAD642529F1480026E1A0 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8DAD632529F1480026E1A0 /* CategoryViewModel.swift */; };
 		FE8DAD662529F71B0026E1A0 /* CategoryFoodListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE8DAD652529F71B0026E1A0 /* CategoryFoodListViewModel.swift */; };
+		FEDCB14326258232000696F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FEDCB14226258232000696F1 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -58,9 +58,9 @@
 		FE64AB27250CC2E000535322 /* CategoriesFoodList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesFoodList.swift; sourceTree = "<group>"; };
 		FE64AB29250D429700535322 /* Meals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meals.swift; sourceTree = "<group>"; };
 		FE66246F2517CB7800B895B1 /* MealDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetail.swift; sourceTree = "<group>"; };
-		FE86FE0A261CD58100F7DE92 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../app-store-animation-master/AppStoreAnimation/Assets.xcassets"; sourceTree = "<group>"; };
 		FE8DAD632529F1480026E1A0 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		FE8DAD652529F71B0026E1A0 /* CategoryFoodListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryFoodListViewModel.swift; sourceTree = "<group>"; };
+		FEDCB14226258232000696F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,7 +145,7 @@
 				FE5F00172504E4510082E5C8 /* Models */,
 				FE5FFFFA2504BAF70082E5C8 /* AppDelegate.swift */,
 				FE5FFFFC2504BAF70082E5C8 /* SceneDelegate.swift */,
-				FE86FE0A261CD58100F7DE92 /* Assets.xcassets */,
+				FEDCB14226258232000696F1 /* Assets.xcassets */,
 				FE5F00052504BAFA0082E5C8 /* LaunchScreen.storyboard */,
 				FE5F00082504BAFA0082E5C8 /* Info.plist */,
 				FE5F00022504BAFA0082E5C8 /* Preview Content */,
@@ -237,7 +237,7 @@
 			files = (
 				FE5F00072504BAFA0082E5C8 /* LaunchScreen.storyboard in Resources */,
 				FE5F00042504BAFA0082E5C8 /* Preview Assets.xcassets in Resources */,
-				FE86FE0B261CD58100F7DE92 /* Assets.xcassets in Resources */,
+				FEDCB14326258232000696F1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
