@@ -16,3 +16,17 @@ struct MealList: Codable, Hashable {
     var strMealThumb: String
     var idMeal: String
 }
+struct MealListViewModel {
+    var strMeal: String
+    var strMealThumb: String
+    var idMeal: String
+    var show: Bool
+    
+    init (model: MealList) {
+        strMeal = model.strMeal
+        strMealThumb = model.strMealThumb
+        idMeal = model.idMeal
+        show = false
+    }
+}
+

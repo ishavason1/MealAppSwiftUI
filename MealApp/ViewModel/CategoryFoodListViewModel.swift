@@ -11,16 +11,18 @@ import SwiftUI
 import Combine
 
  class CategoryFoodListViewModel: ObservableObject {
-    @Published private(set) var categoriesMealData: [MealList] = []
+    @Published private(set) var categoriesMealData: [MealListViewModel] = []
     var cancellationToken: AnyCancellable?
-    func getFoodList(title: String)  {
+    func getFoodList(title: String, completion: @escaping (([MealListViewModel]) -> ()))  {
         cancellationToken = self.makeRequestForCategory(categoryTitle: title)
             .mapError({(error) -> Error in
                 print(error)
                 return error
             })
         .sink(receiveCompletion: { _ in }, receiveValue: { response in
-            self.categoriesMealData = response.meals ?? []
+            let mealList = response.meals ?? []
+            self.categoriesMealData = mealList.map(MealListViewModel.init)
+            completion(self.categoriesMealData)
         })
     }
     

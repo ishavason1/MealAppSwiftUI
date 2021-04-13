@@ -13,12 +13,14 @@ import ASCollectionView_SwiftUI
 struct ContentView: View {
     @ObservedObject var viewModel: CategoryListViewModel
     @ObservedObject var viewFoodModel: CategoryFoodListViewModel
+    @State private var showingDetail = false
     var body: some View {
         NavigationView {
             ZStack {
                 Color.appBackgroundColor.edgesIgnoringSafeArea(.all)
                
                 ASCollectionView(data: viewModel.categoriesData, dataID: \.self) { item, _ in
+                    
                     NavigationLink(destination: CategoriesFoodList(categorytitle: item.strCategory, viewModel: self.viewFoodModel)) {
                          CollectionView(dataItems: item, imageLoader: ImageLoader(urlString: item.strCategoryThumb)).padding(.top)
                     }.buttonStyle(PlainButtonStyle())
@@ -32,7 +34,6 @@ struct ContentView: View {
                     }
                 
             }.navigationBarTitle("Categories", displayMode: .large)
-               
                 .onAppear(perform: viewModel.loadData)
             
         }

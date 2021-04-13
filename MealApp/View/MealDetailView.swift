@@ -12,11 +12,15 @@ struct MealDetailView: View {
     var mealId: String
     @State private var data = [MealDetail]()
     @ObservedObject var viewModel: MealDetailViewModel
+    var imageUrl: String
+    @Binding var show: Bool
+    @Binding var active: Bool
+    @Binding var activeIndex: Int
     var body: some View {
         VStack {
             VStack{
                 ZStack {
-                    ImageRow(imageLoader: ImageLoader(urlString: viewModel.mealDetailData.first?.strMealThumb ?? ""))
+                    ImageRow(imageLoader: ImageLoader(urlString: imageUrl))
                 }
             }
         .frame(width: screen.width, height: 400)
@@ -62,7 +66,7 @@ struct MealItemView: View {
 
         struct MealDetailView_Previews: PreviewProvider {
             static var previews: some View {
-                MealDetailView(mealId: "", viewModel: MealDetailViewModel())
+                MealDetailView( mealId: "", viewModel: MealDetailViewModel(), imageUrl: "", show: .constant(true), active: .constant(true), activeIndex: .constant(-1))
             }
 }
 
