@@ -6,5 +6,11 @@ target 'MealApp' do
   use_frameworks!
 
   pod 'ASCollectionView-SwiftUI', '~> 1.3'
+  pod 'Firebase/Database'
+  pod 'Firebase/Firestore'
+  pod 'Firebase/Auth'
+
+# add pods for desired Firebase products
+# https://firebase.google.com/docs/ios/setup#available-pods
 
 end

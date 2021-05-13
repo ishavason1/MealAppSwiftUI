@@ -35,6 +35,38 @@ extension Color {
     }
     
     static var appBackgroundColor: Color {
-        return Color.init(red: 241.0/255.0, green: 156.0/255.0, blue: 187.0/255.0)
+        return Color.init(red: 38.0/255.0, green: 79.0/255.0, blue: 82.0/255.0)
+    }
+    
+    static var appButtonColor: Color {
+        return Color.init(red: 136.0/255.0, green: 189.0/255.0, blue: 179.0/255.0)
     }
 }
+
+struct ProgressView: UIViewRepresentable {
+    
+    func makeUIView(context: UIViewRepresentableContext<ProgressView>) -> UIActivityIndicatorView {
+        let indicator =  UIActivityIndicatorView(style: .large)
+        indicator.color = UIColor.white
+        return indicator
+    }
+    
+    func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ProgressView>) {
+        uiView.startAnimating()
+    }
+}
+
+struct XCAButtonStyle: ButtonStyle {
+ 
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            .font(.headline)
+            .frame(width: 130, height: 44)
+            .foregroundColor(Color.white)
+            .background(Color.appButtonColor)
+            .cornerRadius(8)
+    }
+}
+
+
+
