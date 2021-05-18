@@ -10,6 +10,7 @@
 		9832526AF3D4857743C73698 /* Pods_MealApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B19D7B48F53ACD6D7B519E3D /* Pods_MealApp.framework */; };
 		FE1657D0264C413D00AA7B6D /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1657CF264C413D00AA7B6D /* MainTabView.swift */; };
 		FE1657D2264C453C00AA7B6D /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE1657D1264C453C00AA7B6D /* AccountsView.swift */; };
+		FE1657D4264EC30F00AA7B6D /* menu.json in Resources */ = {isa = PBXBuildFile; fileRef = FE1657D3264EC30E00AA7B6D /* menu.json */; };
 		FE36C70F25127ED80091307B /* MealDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE36C70E25127ED80091307B /* MealDetailView.swift */; };
 		FE5D367A25C1E11900B7133D /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5D367925C1E11900B7133D /* ApiClient.swift */; };
 		FE5D367C25C3389800B7133D /* MealDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE5D367B25C3389800B7133D /* MealDetailViewModel.swift */; };
@@ -54,6 +55,7 @@
 		B19D7B48F53ACD6D7B519E3D /* Pods_MealApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MealApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE1657CF264C413D00AA7B6D /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		FE1657D1264C453C00AA7B6D /* AccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsView.swift; sourceTree = "<group>"; };
+		FE1657D3264EC30E00AA7B6D /* menu.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = menu.json; sourceTree = "<group>"; };
 		FE36C70E25127ED80091307B /* MealDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailView.swift; sourceTree = "<group>"; };
 		FE5D367925C1E11900B7133D /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		FE5D367B25C3389800B7133D /* MealDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealDetailViewModel.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 		FE5F00172504E4510082E5C8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				FE1657D3264EC30E00AA7B6D /* menu.json */,
 				FE5F00152504C6C10082E5C8 /* MealsCategory.swift */,
 				FE64AB29250D429700535322 /* Meals.swift */,
 				FE66246F2517CB7800B895B1 /* MealDetail.swift */,
@@ -262,6 +265,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE1657D4264EC30F00AA7B6D /* menu.json in Resources */,
 				FE5F00072504BAFA0082E5C8 /* LaunchScreen.storyboard in Resources */,
 				FEC3F36B263C3241001AA626 /* GoogleService-Info.plist in Resources */,
 				FE5F00042504BAFA0082E5C8 /* Preview Assets.xcassets in Resources */,
