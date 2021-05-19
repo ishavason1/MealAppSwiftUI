@@ -57,14 +57,11 @@ struct BreakFastMenu: View {
     }
     var body: some View {
         ScrollView {
-            
-           
             VStack(alignment: .leading) {
-                            Text("Breakfast")
-                                .font(.headline)
-                                .foregroundColor(.white)
+                    Text("Breakfast")
+                    .font(.headline)
+                    .foregroundColor(.white)
                                             
-                        
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack (spacing: 30){
                         ForEach(menu[0].items) { num in
@@ -85,6 +82,34 @@ struct BreakFastMenu: View {
                         }
                     }.padding()
                         
+                }
+                Text("Breakfast")
+                .font(.headline)
+                .foregroundColor(.white)
+                    .padding(.top)
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 20) {
+                        ForEach(menu[0].items) { num in
+                            GeometryReader { proxy in
+                            Image(num.mainImage)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 200)
+                                .clipped()
+                                .cornerRadius(5)
+                                .shadow(radius: 5)
+                                .scaleEffect(CGSize(width: 1, height: 1))
+                                .rotation3DEffect(
+                                    Angle(degrees: Double(proxy.frame(in: .global).minX)),
+                                    axis: (x: 0.0, y: 10.0, z: 0.0)
+                                    
+                                    )
+                        }
+                            .frame(width: 200, height: 200)
+                        }
+                        
+                    }
+                    
                 }
             }.padding()
             
